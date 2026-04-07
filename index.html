@@ -1,0 +1,371 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>营销策划学习</title>
+  <style>
+    :root {
+      --bg: #f5f6f8;
+      --card: #ffffff;
+      --text: #1f2937;
+      --subtext: #6b7280;
+      --line: #e5e7eb;
+      --accent: #ff6600;
+      --accent-light: #fff3eb;
+      --shadow: 0 10px 30px rgba(15, 23, 42, 0.06);
+      --shadow-hover: 0 16px 40px rgba(15, 23, 42, 0.10);
+      --radius: 20px;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      font-family: -apple-system, BlinkMacSystemFont, "PingFang SC", "Microsoft YaHei", "Helvetica Neue", Arial, sans-serif;
+      background:
+        radial-gradient(circle at top left, #fff7f2 0%, transparent 30%),
+        radial-gradient(circle at top right, #f3f6ff 0%, transparent 35%),
+        var(--bg);
+      color: var(--text);
+    }
+
+    .page {
+      max-width: 1160px;
+      margin: 0 auto;
+      padding: 28px 20px 48px;
+    }
+
+    .hero {
+      background: linear-gradient(135deg, #ffffff 0%, #fff9f5 100%);
+      border: 1px solid rgba(255, 102, 0, 0.10);
+      border-radius: 28px;
+      padding: 28px 24px 24px;
+      box-shadow: var(--shadow);
+      margin-bottom: 22px;
+    }
+
+    .hero-top {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 6px 12px;
+      border-radius: 999px;
+      background: var(--accent-light);
+      color: var(--accent);
+      font-size: 13px;
+      font-weight: 600;
+      margin-bottom: 18px;
+    }
+
+    h1 {
+      margin: 0;
+      font-size: 34px;
+      line-height: 1.2;
+      letter-spacing: 0.2px;
+    }
+
+    .subtitle {
+      margin-top: 10px;
+      font-size: 16px;
+      color: var(--subtext);
+      line-height: 1.7;
+      max-width: 760px;
+    }
+
+    .meta {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-top: 22px;
+    }
+
+    .meta-item {
+      padding: 10px 14px;
+      border: 1px solid var(--line);
+      border-radius: 14px;
+      background: #fff;
+      color: #374151;
+      font-size: 14px;
+    }
+
+    .section-head {
+      display: flex;
+      align-items: end;
+      justify-content: space-between;
+      gap: 12px;
+      margin: 30px 0 16px;
+    }
+
+    .section-title {
+      font-size: 20px;
+      font-weight: 700;
+      margin: 0;
+    }
+
+    .section-note {
+      font-size: 14px;
+      color: var(--subtext);
+      margin: 0;
+    }
+
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 18px;
+    }
+
+    .card {
+      position: relative;
+      display: block;
+      text-decoration: none;
+      color: inherit;
+      background: var(--card);
+      border-radius: var(--radius);
+      padding: 22px 20px 20px;
+      border: 1px solid rgba(17, 24, 39, 0.06);
+      box-shadow: var(--shadow);
+      transition: transform 0.22s ease, box-shadow 0.22s ease, border-color 0.22s ease;
+      overflow: hidden;
+      min-height: 220px;
+    }
+
+    .card:hover {
+      transform: translateY(-4px);
+      box-shadow: var(--shadow-hover);
+      border-color: rgba(255, 102, 0, 0.22);
+    }
+
+    .card::before {
+      content: "";
+      position: absolute;
+      inset: 0 auto auto 0;
+      width: 100%;
+      height: 5px;
+      background: linear-gradient(90deg, var(--accent) 0%, #ff9a4d 100%);
+    }
+
+    .card-top {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 18px;
+    }
+
+    .badge {
+      width: 44px;
+      height: 44px;
+      border-radius: 14px;
+      background: var(--accent-light);
+      color: var(--accent);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 22px;
+      font-weight: 700;
+      flex-shrink: 0;
+    }
+
+    .index {
+      font-size: 13px;
+      color: #9ca3af;
+      letter-spacing: 1px;
+      font-weight: 600;
+    }
+
+    .title {
+      font-size: 22px;
+      font-weight: 700;
+      line-height: 1.35;
+      margin: 0 0 8px;
+      color: #111827;
+    }
+
+    .desc {
+      font-size: 15px;
+      color: var(--subtext);
+      line-height: 1.75;
+      margin-bottom: 18px;
+    }
+
+    .tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-bottom: 22px;
+    }
+
+    .tag {
+      font-size: 12px;
+      color: #4b5563;
+      background: #f9fafb;
+      border: 1px solid var(--line);
+      border-radius: 999px;
+      padding: 6px 10px;
+    }
+
+    .enter {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      color: var(--accent);
+      font-size: 14px;
+      font-weight: 700;
+    }
+
+    .arrow {
+      transition: transform 0.22s ease;
+    }
+
+    .card:hover .arrow {
+      transform: translateX(4px);
+    }
+
+    .footer {
+      margin-top: 26px;
+      padding: 18px 2px 0;
+      border-top: 1px solid rgba(17, 24, 39, 0.06);
+      color: #9ca3af;
+      font-size: 13px;
+      text-align: center;
+    }
+
+    @media (max-width: 860px) {
+      .grid {
+        grid-template-columns: 1fr;
+      }
+
+      h1 {
+        font-size: 28px;
+      }
+
+      .subtitle {
+        font-size: 15px;
+      }
+
+      .card {
+        min-height: unset;
+      }
+    }
+
+    @media (max-width: 480px) {
+      .page {
+        padding: 16px 14px 28px;
+      }
+
+      .hero {
+        padding: 22px 18px 18px;
+        border-radius: 22px;
+      }
+
+      h1 {
+        font-size: 24px;
+      }
+
+      .title {
+        font-size: 20px;
+      }
+
+      .desc {
+        font-size: 14px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="page">
+
+    <section class="hero">
+      <div class="hero-top">营销能力知识库</div>
+      <h1>营销策划学习</h1>
+      <div class="subtitle">
+        懂营销｜懂策划｜懂客户｜懂数据。<br>
+        聚焦营销学知识、策划案例、客户洞察与数据分析，搭建系统化学习与实战参考入口。
+      </div>
+
+      <div class="meta">
+        <div class="meta-item">专题结构化沉淀</div>
+        <div class="meta-item">案例与方法并重</div>
+        <div class="meta-item">适配手机端浏览</div>
+        <div class="meta-item">阿里云盘内容直达</div>
+      </div>
+    </section>
+
+    <div class="section-head">
+      <div>
+        <h2 class="section-title">专题导航</h2>
+        <p class="section-note">按主题进入对应资料专区，查看长图、案例、研报与方法框架。</p>
+      </div>
+    </div>
+
+    <section class="grid">
+      <a class="card" href="https://www.alipan.com/s/g41hupHPP5P" target="_blank">
+        <div class="card-top">
+          <div class="badge">营</div>
+          <div class="index">01</div>
+        </div>
+        <div class="title">懂营销｜营销专题</div>
+        <div class="desc">营销学知识 + 实战案例</div>
+        <div class="tags">
+          <span class="tag">营销框架</span>
+          <span class="tag">案例拆解</span>
+          <span class="tag">策略分析</span>
+        </div>
+        <div class="enter">进入专题 <span class="arrow">→</span></div>
+      </a>
+
+      <a class="card" href="https://www.alipan.com/s/S6zahac2WnH" target="_blank">
+        <div class="card-top">
+          <div class="badge">策</div>
+          <div class="index">02</div>
+        </div>
+        <div class="title">懂策划｜策划专题</div>
+        <div class="desc">内外部策划案例深度剖析</div>
+        <div class="tags">
+          <span class="tag">内部策划</span>
+          <span class="tag">外部案例</span>
+          <span class="tag">逻辑拆解</span>
+        </div>
+        <div class="enter">进入专题 <span class="arrow">→</span></div>
+      </a>
+
+      <a class="card" href="https://www.alipan.com/s/3NLP1ASidwL" target="_blank">
+        <div class="card-top">
+          <div class="badge">客</div>
+          <div class="index">03</div>
+        </div>
+        <div class="title">懂客户｜客户专题</div>
+        <div class="desc">垂直客户销售攻略与洞察</div>
+        <div class="tags">
+          <span class="tag">客户分层</span>
+          <span class="tag">销售打法</span>
+          <span class="tag">客户洞察</span>
+        </div>
+        <div class="enter">进入专题 <span class="arrow">→</span></div>
+      </a>
+
+      <a class="card" href="https://www.alipan.com/s/pPhTt3sxaeK" target="_blank">
+        <div class="card-top">
+          <div class="badge">数</div>
+          <div class="index">04</div>
+        </div>
+        <div class="title">懂数据｜数据专题</div>
+        <div class="desc">研报解读 + 数据分析应用</div>
+        <div class="tags">
+          <span class="tag">研报解读</span>
+          <span class="tag">分析方法</span>
+          <span class="tag">经营应用</span>
+        </div>
+        <div class="enter">进入专题 <span class="arrow">→</span></div>
+      </a>
+    </section>
+
+    <div class="footer">
+      Marketing Knowledge Hub · 营销策划学习
+    </div>
+
+  </div>
+</body>
+</html>
